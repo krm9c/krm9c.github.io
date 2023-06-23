@@ -6,11 +6,15 @@
 
 // Colors
 // My definitions
-$back-color:          lighten(#659dbd, 70%) !default;
-$text-color:          #5D5C61 !default;
-$hover-color:        #AFD275 !default;
-$highlight-color:             #E7717D !default;
+$text-color:         #1D1842 !default;
+$hover-color:        #6ACFC7 !default;
+$back-color:         #ffffff !default;
+$highlight-color:    #FF5841 !default;
 
+
+
+$header-color:       $back-color     !default;
+$header-text-color:  $highlight-color !default;
 
 // definitions in the main dociments
 $blue-color:          #0076df !default;
