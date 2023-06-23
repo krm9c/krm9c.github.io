@@ -5,9 +5,14 @@
 
 
 // Colors
-$red-color:           #FF3636 !default;
-$red-color-dark:      #B71C1C !default;
-$orange-color:        #F29105 !default;
+// My definitions
+$back-color:          lighten(#659dbd, 70%) !default;
+$text-color:          #5D5C61 !default;
+$hover-color:        #AFD275 !default;
+$highlight-color:             #E7717D !default;
+
+
+// definitions in the main dociments
 $blue-color:          #0076df !default;
 $blue-color-dark:     #00369f !default;
 $cyan-color:          #2698BA !default;
@@ -24,7 +29,7 @@ $pink-color-light:    #ffdddd !default;
 $yellow-color:        #efcc00 !default;
 
 $grey-color:          #828282 !default;
-$grey-color-light:    lighten($grey-color, 40%);
+$grey-color-light:    lighten($grey-color, 10%);
 $grey-color-dark:     #1C1C1D;
 $grey-900:            #212529;
 
@@ -33,6 +38,5 @@ $black-color: #000000 !default;
 
 
 // Theme colors
-
 $code-bg-color-light:     rgba($purple-color, 0.05);
 $code-bg-color-dark:      #2c3237 !default;
