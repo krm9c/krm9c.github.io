@@ -1,0 +1,52 @@
+# Site settings
+title: Krishnan Raghavan
+description: Assistant Computational Mathematician at Argonne National Laboratory
+url: https://krm9c.github.io
+baseurl: ""
+
+# Author
+author:
+  name: Krishnan Raghavan
+  email: kraghavan@anl.gov
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-scholar
+  - jekyll-seo-tag
+
+# Scholar settings
+scholar:
+  style: apa
+  locale: en
+  source: ./_bibliography/
+  bibliography: MyPub.bib
+  bibliography_template: bib
+  query: "@*"
+  sort_by: year
+  order: descending
+  group_by: year
+  group_order: descending
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

@@ -1,0 +1,768 @@
+// =============================================================================
+// Variables
+// =============================================================================
+$dark-bg: #1a1a2e;
+$teal: #4ECDC4;
+$coral: #FF6B6B;
+$white: #ffffff;
+
+$primary: $teal;
+$accent: $coral;
+$sidebar-bg: $dark-bg;
+$sidebar-width: 280px;
+$text-color: $white;
+$text-light: rgba(255, 255, 255, 0.7);
+$bg-color: $dark-bg;
+$border-color: rgba(255, 255, 255, 0.1);
+
+// Research area colors (teal/coral variations)
+$indigo: $teal;
+$emerald: #3BA99C;
+$rose: $coral;
+$amber: #FF8E72;
+$violet: #5DADE2;
+$gray: #6b7280;
+
+// =============================================================================
+// Reset & Base
+// =============================================================================
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $text-color;
+  background: $bg-color;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin: 2rem 0;
+}
+
+// =============================================================================
+// Site Layout (Sidebar + Content)
+// =============================================================================
+.site-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+// =============================================================================
+// Sidebar
+// =============================================================================
+.sidebar {
+  width: $sidebar-width;
+  background: $sidebar-bg;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar-profile {
+  display: block;
+  margin-bottom: 1rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid $teal;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $coral;
+  }
+}
+
+.sidebar-name {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.sidebar-title {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-affiliation {
+  font-size: 0.8rem;
+  color: $primary;
+  margin-bottom: 1rem;
+}
+
+.sidebar-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.25rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $coral;
+      text-decoration: none;
+    }
+  }
+}
+
+// =============================================================================
+// Sidebar Navigation
+// =============================================================================
+.sidebar-nav {
+  flex: 1;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  > ul > li {
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-decoration: none;
+    }
+
+    &.active {
+      background: $coral;
+      color: white;
+    }
+  }
+
+  .has-submenu {
+    > a {
+      position: relative;
+
+      &::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 0.7rem;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.2s;
+      }
+    }
+
+    &:hover > a::after,
+    &.open > a::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  .submenu {
+    display: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+
+    a {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      color: rgba(255, 255, 255, 0.6);
+
+      &:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+
+  .has-submenu:hover .submenu,
+  .has-submenu.open .submenu {
+    display: block;
+  }
+}
+
+// =============================================================================
+// Sidebar Toggle (Mobile)
+// =============================================================================
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: $sidebar-bg;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+
+  &:hover {
+    background: lighten($sidebar-bg, 10%);
+  }
+}
+
+// =============================================================================
+// Main Content
+// =============================================================================
+.site-content {
+  flex: 1;
+  margin-left: $sidebar-width;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $border-color;
+}
+
+.page-title {
+  margin-bottom: 0;
+}
+
+// =============================================================================
+// Home Page
+// =============================================================================
+.home {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+// =============================================================================
+// Research Cards
+// =============================================================================
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.research-card {
+  display: block;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $border-color;
+  border-left-width: 4px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+  }
+
+  .card-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $text-light;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: $text-color;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: $text-light;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .card-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  // Color variants
+  &.card-indigo {
+    border-left-color: $indigo;
+    .card-count { color: $indigo; }
+  }
+  &.card-emerald {
+    border-left-color: $emerald;
+    .card-count { color: $emerald; }
+  }
+  &.card-rose {
+    border-left-color: $rose;
+    .card-count { color: $rose; }
+  }
+  &.card-amber {
+    border-left-color: $amber;
+    .card-count { color: $amber; }
+  }
+  &.card-violet {
+    border-left-color: $violet;
+    .card-count { color: $violet; }
+  }
+  &.card-gray {
+    border-left-color: $gray;
+    .card-count { color: $gray; }
+  }
+}
+
+// =============================================================================
+// Research Page Banner
+// =============================================================================
+.research-page {
+  .research-banner {
+    padding: 3rem 2rem;
+    color: white;
+
+    .banner-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .back-link {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+
+      &:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    &.banner-indigo { background: linear-gradient(135deg, $indigo, lighten($indigo, 10%)); }
+    &.banner-emerald { background: linear-gradient(135deg, $emerald, lighten($emerald, 10%)); }
+    &.banner-rose { background: linear-gradient(135deg, $rose, lighten($rose, 10%)); }
+    &.banner-amber { background: linear-gradient(135deg, $amber, lighten($amber, 10%)); }
+    &.banner-violet { background: linear-gradient(135deg, $violet, lighten($violet, 10%)); }
+    &.banner-gray { background: linear-gradient(135deg, $gray, lighten($gray, 10%)); }
+  }
+
+  .research-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+}
+
+// =============================================================================
+// News Items
+// =============================================================================
+.news-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 1rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .news-date {
+    color: $text-light;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    min-width: 70px;
+  }
+
+  .news-content {
+    flex: 1;
+    font-size: 0.95rem;
+  }
+}
+
+// =============================================================================
+// Quick Links
+// =============================================================================
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  a {
+    padding: 0.5rem 1rem;
+    background: $dark-bg;
+    border-radius: 6px;
+    color: $white;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background: $coral;
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+// =============================================================================
+// Publications
+// =============================================================================
+.publications-list {
+  .pub-year {
+    color: $text-light;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $border-color;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .pub-item {
+    margin-bottom: 1.5rem;
+
+    .pub-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-authors {
+      font-size: 0.9rem;
+      color: $text-light;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-venue {
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-links {
+      font-size: 0.85rem;
+
+      a {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+}
+
+// Publication tags for bib entries
+.page {
+  counter-reset: publication-counter 55; // Start at 55 (54 + 1) for reverse counting
+}
+
+h2.bibliography {
+  // Year headings
+  color: $coral;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid $coral;
+  padding-bottom: 0.5rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+ol.bibliography {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    counter-increment: publication-counter -1; // Decrement instead of increment
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      content: counter(publication-counter) ".";
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+      color: $text-color;
+    }
+  }
+}
+
+.bib-entry {
+  .pub-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+
+    &.pub-tag-journal {
+      background: rgba($teal, 0.2);
+      color: $teal;
+      border: 1px solid rgba($teal, 0.3);
+    }
+
+    &.pub-tag-conference {
+      background: rgba($coral, 0.2);
+      color: $coral;
+      border: 1px solid rgba($coral, 0.3);
+    }
+
+    &.pub-tag-preprint {
+      background: rgba($amber, 0.2);
+      color: $amber;
+      border: 1px solid rgba($amber, 0.3);
+    }
+
+    &.pub-tag-misc {
+      background: rgba($text-light, 0.2);
+      color: $text-light;
+      border: 1px solid rgba($text-light, 0.3);
+    }
+  }
+
+  .title {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+
+    a {
+      color: $primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .author {
+    display: block;
+    font-size: 0.9rem;
+    color: $text-light;
+    margin-bottom: 0.25rem;
+  }
+
+  .venue {
+    display: block;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: $text-light;
+  }
+}
+
+// =============================================================================
+// News Tags (matching publication tag styling)
+// =============================================================================
+.news-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+
+  &.news-tag-grant {
+    background: rgba($emerald, 0.2);
+    color: $emerald;
+    border: 1px solid rgba($emerald, 0.3);
+  }
+
+  &.news-tag-invited {
+    background: rgba($teal, 0.2);
+    color: $teal;
+    border: 1px solid rgba($teal, 0.3);
+  }
+
+  &.news-tag-keynote {
+    background: rgba($coral, 0.2);
+    color: $coral;
+    border: 1px solid rgba($coral, 0.3);
+  }
+
+  &.news-tag-presentation {
+    background: rgba($violet, 0.2);
+    color: $violet;
+    border: 1px solid rgba($violet, 0.3);
+  }
+
+  &.news-tag-milestone {
+    background: rgba($amber, 0.2);
+    color: $amber;
+    border: 1px solid rgba($amber, 0.3);
+  }
+
+  &.news-tag-award {
+    background: rgba($amber, 0.2);
+    color: $amber;
+    border: 1px solid rgba($amber, 0.3);
+  }
+}
+
+// =============================================================================
+// Footer
+// =============================================================================
+.site-footer {
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid $border-color;
+  padding: 2rem;
+  margin-left: $sidebar-width;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  p {
+    color: $text-light;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
+  a {
+    color: $text-light;
+    font-size: 1.25rem;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+  .sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-content {
+    margin-left: 0;
+  }
+
+  .site-footer {
+    margin-left: 0;
+  }
+
+  .page, .home {
+    padding: 4rem 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page, .home {
+    padding: 4rem 1rem 2rem;
+  }
+}

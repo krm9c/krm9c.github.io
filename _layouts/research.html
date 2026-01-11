@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<article class="research-page">
+  <div class="research-banner banner-{{ page.banner_color | default: 'gray' }}" {% if page.banner_image %}style="--banner-image: url('{{ page.banner_image | relative_url }}');"{% endif %}>
+    {% if page.banner_image %}
+    <div class="banner-bg"></div>
+    {% endif %}
+    <div class="banner-content">
+      <a href="{{ '/' | relative_url }}" class="back-link"><i class="fas fa-arrow-left"></i> Home</a>
+      <h1>{{ page.title }}</h1>
+    </div>
+  </div>
+
+  <div class="research-content">
+    {{ content }}
+  </div>
+</article>

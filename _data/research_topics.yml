@@ -1,0 +1,30 @@
+- color: indigo
+  icon: fa-brain
+  id: continual-learning
+  paper_count: 7
+  permalink: /research/continual-learning/
+  title: Continual Learning
+- color: emerald
+  icon: fa-project-diagram
+  id: workflow-systems
+  paper_count: 11
+  permalink: /research/workflow-systems/
+  title: Workflow Management & Anomaly Detection
+- color: rose
+  icon: fa-atom
+  id: scientific-ml
+  paper_count: 9
+  permalink: /research/scientific-ml/
+  title: Scientific Machine Learning
+- color: amber
+  icon: fa-network-wired
+  id: deep-learning
+  paper_count: 8
+  permalink: /research/deep-learning/
+  title: Deep Learning Theory & Methods
+- color: violet
+  icon: fa-robot
+  id: reinforcement-learning
+  paper_count: 6
+  permalink: /research/reinforcement-learning/
+  title: Reinforcement Learning & Control

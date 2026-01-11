@@ -1,0 +1,57 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <a href="{{ '/' | relative_url }}" class="sidebar-profile">
+      <img src="{{ '/assets/img/prof_pic.JPG' | relative_url }}" alt="Krishnan Raghavan" class="profile-photo">
+    </a>
+    <h1 class="sidebar-name">Krishnan Raghavan</h1>
+    <p class="sidebar-title">Assistant Computational Mathematician</p>
+    <p class="sidebar-affiliation">Argonne National Laboratory</p>
+
+    <div class="sidebar-social">
+      <a href="https://scholar.google.com/citations?user=AQUdlTMAAAAJ&hl=en" target="_blank" title="Google Scholar">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+      <a href="https://github.com/krm9c" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://linkedin.com/in/krm9c" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="mailto:kraghavan@anl.gov" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>About</a></li>
+      <li class="has-submenu">
+        <a href="{{ '/research/' | relative_url }}" {% if page.url contains 'research' %}class="active"{% endif %}>Research</a>
+        <ul class="submenu">
+          <li><a href="{{ '/research/continual-learning/' | relative_url }}">Continual Learning</a></li>
+          <li><a href="{{ '/research/workflow-systems/' | relative_url }}">Workflow Systems</a></li>
+          <li><a href="{{ '/research/scientific-ml/' | relative_url }}">Scientific ML</a></li>
+          <li><a href="{{ '/research/deep-learning/' | relative_url }}">Deep Learning</a></li>
+          <li><a href="{{ '/research/reinforcement-learning/' | relative_url }}">RL & Control</a></li>
+          <li><a href="{{ '/research/other/' | relative_url }}">Other</a></li>
+        </ul>
+      </li>
+      <li><a href="{{ '/publications/' | relative_url }}" {% if page.url contains 'publications' %}class="active"{% endif %}>Publications</a></li>
+      <li><a href="{{ '/news/' | relative_url }}" {% if page.url contains 'news' %}class="active"{% endif %}>News</a></li>
+      <li><a href="{{ '/team/' | relative_url }}" {% if page.url contains 'team' %}class="active"{% endif %}>Team</a></li>
+      <li><a href="{{ '/software/' | relative_url }}" {% if page.url contains 'software' %}class="active"{% endif %}>Software</a></li>
+      <li><a href="{{ '/cv/' | relative_url }}" {% if page.url contains 'cv' %}class="active"{% endif %}>CV</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<button class="sidebar-toggle" aria-label="Toggle sidebar">
+  <i class="fas fa-bars"></i>
+</button>
+
+<script>
+document.querySelector('.sidebar-toggle').addEventListener('click', function() {
+  document.querySelector('.sidebar').classList.toggle('active');
+});
+</script>

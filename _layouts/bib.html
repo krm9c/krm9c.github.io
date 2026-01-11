@@ -1,0 +1,36 @@
+---
+---
+<div class="bib-entry">
+  {% if entry.type == "article" %}
+    <span class="pub-tag pub-tag-journal">Journal</span>
+  {% elsif entry.type == "inproceedings" %}
+    <span class="pub-tag pub-tag-conference">Conference</span>
+  {% elsif entry.type == "preprint" %}
+    <span class="pub-tag pub-tag-preprint">Preprint</span>
+  {% elsif entry.type == "incollection" %}
+    <span class="pub-tag pub-tag-misc">Book Chapter</span>
+  {% elsif entry.type == "techreport" %}
+    <span class="pub-tag pub-tag-misc">Tech Report</span>
+  {% elsif entry.type == "phdthesis" %}
+    <span class="pub-tag pub-tag-misc">Thesis</span>
+  {% endif %}
+  <span class="title">
+    {% if entry.doi %}
+      <a href="https://doi.org/{{ entry.doi }}" target="_blank">{{ entry.title }}</a>
+    {% elsif entry.arxiv %}
+      <a href="https://arxiv.org/abs/{{ entry.arxiv }}" target="_blank">{{ entry.title }}</a>
+    {% elsif entry.eprint %}
+      <a href="https://arxiv.org/abs/{{ entry.eprint }}" target="_blank">{{ entry.title }}</a>
+    {% elsif entry.url %}
+      <a href="{{ entry.url }}" target="_blank">{{ entry.title }}</a>
+    {% else %}
+      {{ entry.title }}
+    {% endif %}
+  </span>
+  <span class="author">{{ entry.author }}</span>
+  <span class="venue">
+    {% if entry.journal %}{{ entry.journal }}{% endif %}
+    {% if entry.booktitle %}{{ entry.booktitle }}{% endif %}
+    {% if entry.year %}, {{ entry.year }}{% endif %}
+  </span>
+</div>

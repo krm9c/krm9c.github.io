@@ -1,0 +1,1113 @@
+---
+---
+
+// =============================================================================
+// Variables
+// =============================================================================
+$dark-bg: #1a1a2e;
+$teal: #4ECDC4;
+$coral: #FF6B6B;
+$white: #ffffff;
+
+$primary: $teal;
+$accent: $coral;
+$sidebar-bg: $dark-bg;
+$sidebar-width: 280px;
+$text-color: $white;
+$text-light: rgba(255, 255, 255, 0.7);
+$bg-color: $dark-bg;
+$border-color: rgba(255, 255, 255, 0.1);
+
+// Research area colors (teal/coral variations)
+$teal-light: #7EDCD6;
+$coral-light: #FF8E8E;
+$emerald: #3BA99C;
+$emerald-light: #5DBDB2;
+$amber: #FF8E72;
+$amber-light: #FFAA94;
+$violet: #5DADE2;
+$violet-light: #85C4EC;
+$gray-light: #9ca3af;
+
+// =============================================================================
+// Reset & Base
+// =============================================================================
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $text-color;
+  background: $bg-color;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $border-color;
+  margin: 2rem 0;
+}
+
+// =============================================================================
+// Site Layout (Sidebar + Content)
+// =============================================================================
+.site-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+// =============================================================================
+// Sidebar
+// =============================================================================
+.sidebar {
+  width: $sidebar-width;
+  background: $sidebar-bg;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar-profile {
+  display: block;
+  margin-bottom: 1rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid $teal;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $coral;
+  }
+}
+
+.sidebar-name {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.sidebar-title {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-affiliation {
+  font-size: 0.8rem;
+  color: $teal;
+  margin-bottom: 1rem;
+}
+
+.sidebar-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+
+  a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.25rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $coral;
+      text-decoration: none;
+    }
+  }
+}
+
+// =============================================================================
+// Sidebar Navigation
+// =============================================================================
+.sidebar-nav {
+  flex: 1;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  > ul > li {
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-decoration: none;
+    }
+
+    &.active {
+      background: $coral;
+      color: white;
+    }
+  }
+
+  .has-submenu {
+    > a {
+      position: relative;
+
+      &::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 0.7rem;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.2s;
+      }
+    }
+
+    &:hover > a::after,
+    &.open > a::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  .submenu {
+    display: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+
+    a {
+      font-size: 0.85rem;
+      padding: 0.4rem 1rem;
+      color: rgba(255, 255, 255, 0.6);
+
+      &:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+
+  .has-submenu:hover .submenu,
+  .has-submenu.open .submenu {
+    display: block;
+  }
+}
+
+// =============================================================================
+// Sidebar Toggle (Mobile)
+// =============================================================================
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: $sidebar-bg;
+  border: none;
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+
+  &:hover {
+    background: #2a2a4e;
+  }
+}
+
+// =============================================================================
+// Main Content
+// =============================================================================
+.site-content {
+  flex: 1;
+  margin-left: $sidebar-width;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $border-color;
+}
+
+.page-title {
+  margin-bottom: 0;
+}
+
+// =============================================================================
+// Home Page
+// =============================================================================
+.home {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+}
+
+// =============================================================================
+// Research Cards
+// =============================================================================
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.research-card {
+  display: block;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $border-color;
+  border-left-width: 4px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+  }
+
+  .card-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: $text-light;
+    margin-bottom: 0.5rem;
+    pointer-events: none;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: $text-color;
+    pointer-events: none;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: $text-light;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    pointer-events: none;
+  }
+
+  .card-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  // Color variants using teal/coral palette
+  &.card-indigo {
+    border-left-color: $teal;
+    .card-count { color: $teal; }
+  }
+  &.card-emerald {
+    border-left-color: $emerald;
+    .card-count { color: $emerald; }
+  }
+  &.card-rose {
+    border-left-color: $coral;
+    .card-count { color: $coral; }
+  }
+  &.card-amber {
+    border-left-color: $amber;
+    .card-count { color: $amber; }
+  }
+  &.card-violet {
+    border-left-color: $violet;
+    .card-count { color: $violet; }
+  }
+  &.card-gray {
+    border-left-color: #6b7280;
+    .card-count { color: #6b7280; }
+  }
+}
+
+// =============================================================================
+// Research Images
+// =============================================================================
+.research-thumbnail {
+  float: right;
+  width: 220px;
+  margin: 0 0 1rem 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.research-hero-image {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+// Research section spacing on main research page
+.page {
+  h3 {
+    clear: both; // Ensure headings clear any floated images
+    padding-top: 1rem;
+  }
+
+  // Add clearfix after sections with thumbnails
+  > hr {
+    clear: both;
+    margin: 2rem 0;
+  }
+}
+
+// Responsive adjustments for research thumbnails
+@media (max-width: 768px) {
+  .research-thumbnail {
+    float: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem;
+  }
+}
+
+// =============================================================================
+// Research Page Banner
+// =============================================================================
+.research-page {
+  .research-banner {
+    position: relative;
+    padding: 4rem 2rem;
+    color: white;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+
+    // Blurred background image layer
+    .banner-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--banner-image);
+      background-size: cover;
+      background-position: center;
+      filter: blur(4px);
+      transform: scale(1.1); // Prevent blur edge artifacts
+      z-index: 1;
+    }
+
+    // Subtle dark overlay for text readability
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+
+    // Fallback background for pages without images
+    background: $dark-bg;
+
+    .banner-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .back-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+
+      &:hover {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .research-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+}
+
+// =============================================================================
+// News Items (Home page)
+// =============================================================================
+.news-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 1rem;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .news-date {
+    background: $dark-bg;
+    color: $white;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    min-width: 70px;
+    text-align: center;
+  }
+
+  .news-content {
+    flex: 1;
+    font-size: 0.95rem;
+  }
+
+  .news-venue {
+    color: $teal;
+  }
+}
+
+// =============================================================================
+// News Page Styling
+// =============================================================================
+.page {
+  // Month-year headings (## Jul 2025, ## Sep 2024, etc.)
+  h2 {
+    color: $coral;
+    border-bottom: 2px solid $coral;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+    font-weight: normal;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  // Section subheadings (### Grants, ### Talks & Presentations, etc.)
+  h3 {
+    color: $teal;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  // News/events list items
+  > ul {
+    list-style: none;
+    padding: 0;
+
+    > li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// CV Page
+// =============================================================================
+.cv-download-section {
+  text-align: center;
+  margin: 2rem 0 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cv-download-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: $teal;
+  color: $dark-bg;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);
+
+  i {
+    margin-right: 0.5rem;
+  }
+
+  &:hover {
+    background: $coral;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    text-decoration: none;
+  }
+}
+
+// =============================================================================
+// Quick Links
+// =============================================================================
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  a {
+    padding: 0.5rem 1rem;
+    background: $dark-bg;
+    border-radius: 6px;
+    color: $white;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background: $coral;
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+// =============================================================================
+// GitHub Stats & Repositories
+// =============================================================================
+.github-stats {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  a {
+    display: inline-block;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.02);
+      text-decoration: none;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+}
+
+.github-profile-link {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: $text-light;
+  }
+
+  a {
+    color: $teal;
+    font-weight: 600;
+    transition: color 0.2s;
+
+    i {
+      margin-right: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      color: $coral;
+      text-decoration: none;
+    }
+  }
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.repo-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid $teal;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-left-color: $coral;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .repo-link {
+    color: $text-color;
+    text-decoration: none;
+    margin-bottom: 1rem;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .repo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    i {
+      font-size: 1.5rem;
+      color: $teal;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: $text-color;
+    }
+  }
+
+  .repo-path {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: $text-light;
+    margin: 0;
+  }
+
+  .repo-desc {
+    flex: 1;
+    font-size: 0.9rem;
+    color: $text-light;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .repo-view-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba($teal, 0.2);
+    border: 1px solid $teal;
+    border-radius: 6px;
+    color: $teal;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.2s;
+
+    &:hover {
+      background: $teal;
+      color: $dark-bg;
+      text-decoration: none;
+      transform: translateX(4px);
+    }
+  }
+}
+
+// =============================================================================
+// Publications
+// =============================================================================
+.publications-list {
+  .pub-year {
+    color: $text-light;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $border-color;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .pub-item {
+    margin-bottom: 1.5rem;
+
+    .pub-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-authors {
+      font-size: 0.9rem;
+      color: $text-light;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-venue {
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-links {
+      font-size: 0.85rem;
+
+      a {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+}
+
+// Publication tags for bib entries
+.page {
+  counter-reset: publication-counter 55; // Start at 55 (54 + 1) for reverse counting
+}
+
+h2.bibliography {
+  // Year headings
+  color: $coral;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid $coral;
+  padding-bottom: 0.5rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+ol.bibliography {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    counter-increment: publication-counter -1; // Decrement instead of increment
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      content: counter(publication-counter) ".";
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+      color: $text-color;
+    }
+  }
+}
+
+.bib-entry {
+  .pub-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+
+    &.pub-tag-journal {
+      background: rgba($teal, 0.2);
+      color: $teal;
+      border: 1px solid rgba($teal, 0.3);
+    }
+
+    &.pub-tag-conference {
+      background: rgba($coral, 0.2);
+      color: $coral;
+      border: 1px solid rgba($coral, 0.3);
+    }
+
+    &.pub-tag-preprint {
+      background: rgba($amber, 0.2);
+      color: $amber;
+      border: 1px solid rgba($amber, 0.3);
+    }
+
+    &.pub-tag-misc {
+      background: rgba($text-light, 0.2);
+      color: $text-light;
+      border: 1px solid rgba($text-light, 0.3);
+    }
+  }
+
+  .title {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+
+    a {
+      color: $primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .author {
+    display: block;
+    font-size: 0.9rem;
+    color: $text-light;
+    margin-bottom: 0.25rem;
+  }
+
+  .venue {
+    display: block;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: $text-light;
+  }
+}
+
+// =============================================================================
+// News Tags (matching publication tag styling)
+// =============================================================================
+.news-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+
+  &.news-tag-grant {
+    background: rgba($emerald, 0.2);
+    color: $emerald;
+    border: 1px solid rgba($emerald, 0.3);
+  }
+
+  &.news-tag-invited {
+    background: rgba($teal, 0.2);
+    color: $teal;
+    border: 1px solid rgba($teal, 0.3);
+  }
+
+  &.news-tag-keynote {
+    background: rgba($coral, 0.2);
+    color: $coral;
+    border: 1px solid rgba($coral, 0.3);
+  }
+
+  &.news-tag-presentation {
+    background: rgba($violet, 0.2);
+    color: $violet;
+    border: 1px solid rgba($violet, 0.3);
+  }
+
+  &.news-tag-milestone {
+    background: rgba($amber, 0.2);
+    color: $amber;
+    border: 1px solid rgba($amber, 0.3);
+  }
+
+  &.news-tag-award {
+    background: rgba($amber, 0.2);
+    color: $amber;
+    border: 1px solid rgba($amber, 0.3);
+  }
+}
+
+// =============================================================================
+// Footer
+// =============================================================================
+.site-footer {
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid $border-color;
+  padding: 2rem;
+  margin-left: $sidebar-width;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  p {
+    color: $text-light;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
+  a {
+    color: $text-light;
+    font-size: 1.25rem;
+
+    &:hover {
+      color: $teal;
+    }
+  }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+
+  .sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-content {
+    margin-left: 0;
+  }
+
+  .site-footer {
+    margin-left: 0;
+  }
+
+  .page, .home {
+    padding: 4rem 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page, .home {
+    padding: 4rem 1rem 2rem;
+  }
+}
