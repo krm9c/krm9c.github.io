@@ -6,6 +6,36 @@ nav: true
 nav_order: 4
 ---
 
+## Jul 2026
+
+- <span class="news-tag news-tag-milestone">Topic</span> New research topic: [Partially Observable Multi-Agent Reinforcement Learning]({{ '/research/multi-agent-rl/' | relative_url }})
+- <span class="news-tag news-tag-software">Software</span> New release: [coadapt-marl](https://krm9c.github.io/coadapt-marl/) — a decentralized multi-agent RL harness under partial observability
+
+## Jun 2026
+
+- <span class="news-tag news-tag-journal">Journal</span> New journal paper: [Kiso: A Foundation for Complex, Agentic, and Reproducible Experiments](https://doi.org/10.3389/fcpxs.2026.1800335) — *Frontiers in Complex Systems*
+
+## May 2026
+
+- <span class="news-tag news-tag-preprint">Preprint</span> New preprint titled: [FedQueue: Queue-Aware Federated Learning for Cross-Facility HPC Training](https://arxiv.org/abs/2605.02125)
+
+## Apr 2026
+
+- <span class="news-tag news-tag-journal">Journal</span> New journal paper: [Incentive-Aware Federated Averaging with Performance Guarantees under Strategic Participation](https://doi.org/10.1109/LCSYS.2026.3710203) — *IEEE Control Systems Letters*
+
+## Mar 2026
+
+- <span class="news-tag news-tag-preprint">Preprint</span> New preprint titled: [SWARM+: Scalable and Resilient Multi-Agent Consensus for Decentralized Data-Aware Workload Management](https://arxiv.org/abs/2603.19431)
+
+## Feb 2026
+
+- <span class="news-tag news-tag-preprint">Preprint</span> New preprint titled: [Mitigating Task-Order Sensitivity and Forgetting via Hierarchical Second-Order Consolidation](https://arxiv.org/abs/2602.02568)
+
+## Jan 2026
+
+- <span class="news-tag news-tag-journal">Journal</span> New journal paper: [Modelling the Dynamics of Learning Continually with Graph Neural Networks](https://doi.org/10.1016/j.physd.2026.135207) — *Physica D: Nonlinear Phenomena*
+- <span class="news-tag news-tag-preprint">Preprint</span> New preprint titled: [The Effect of Architecture During Continual Learning](https://arxiv.org/abs/2601.19766)
+
 ## Jul 2025
 
 - <span class="news-tag news-tag-presentation">Talk</span> **International Conference on Continuous Optimization**: On the Dynamics of Neural Network Capacity

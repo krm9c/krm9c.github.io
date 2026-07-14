@@ -28,3 +28,9 @@
   paper_count: 6
   permalink: /research/reinforcement-learning/
   title: Reinforcement Learning & Control
+- color: teal
+  icon: fa-users-gear
+  id: multi-agent-rl
+  paper_count: 3
+  permalink: /research/multi-agent-rl/
+  title: Multi-Agent Reinforcement Learning

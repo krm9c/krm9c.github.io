@@ -16,6 +16,8 @@ children:
     permalink: /research/deep-learning/
   - title: Reinforcement Learning & Control
     permalink: /research/reinforcement-learning/
+  - title: Multi-Agent Reinforcement Learning
+    permalink: /research/multi-agent-rl/
 ---
 
 My research develops machine learning methods for scientific computing, with emphasis on algorithms that learn continually, quantify uncertainty, and scale to distributed systems.
@@ -97,6 +99,16 @@ My research in deep learning foundations develops training algorithms with prova
 Reinforcement learning enables autonomous decision-making in complex, uncertain environments. My research spans theoretical foundations, algorithmic development, and applications to scientific and societal systems.
 
 *6 publications*
+
+<div style="clear:both;"></div>
+
+---
+
+### [Multi-Agent Reinforcement Learning]({{ '/research/multi-agent-rl/' | relative_url }})
+
+Modern AI systems are increasingly *networks* of agents that must coordinate with no central controller, seeing one another only through delayed, local messages. My work studies **stable learning under partial observability**: how each agent can keep adapting without the team spiralling or collapsing when information about a changing target arrives later the farther it must travel (the *information-arrival wall*). This includes an open, decentralized test-bench — [coadapt-marl](https://krm9c.github.io/coadapt-marl/) — for comparing policy-gradient, trust-region, and recurrent belief methods against the best achievable coordination.
+
+*3 publications*
 
 <div style="clear:both;"></div>
 

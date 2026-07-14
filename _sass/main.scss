@@ -385,6 +385,10 @@ hr {
     border-left-color: $violet;
     .card-count { color: $violet; }
   }
+  &.card-teal {
+    border-left-color: $teal;
+    .card-count { color: $teal; }
+  }
   &.card-gray {
     border-left-color: $gray;
     .card-count { color: $gray; }
@@ -426,6 +430,7 @@ hr {
     &.banner-rose { background: linear-gradient(135deg, $rose, lighten($rose, 10%)); }
     &.banner-amber { background: linear-gradient(135deg, $amber, lighten($amber, 10%)); }
     &.banner-violet { background: linear-gradient(135deg, $violet, lighten($violet, 10%)); }
+    &.banner-teal { background: linear-gradient(135deg, $teal, lighten($teal, 10%)); }
     &.banner-gray { background: linear-gradient(135deg, $gray, lighten($gray, 10%)); }
   }
 
@@ -655,6 +660,30 @@ ol.bibliography {
     background: rgba($emerald, 0.2);
     color: $emerald;
     border: 1px solid rgba($emerald, 0.3);
+  }
+
+  &.news-tag-preprint {
+    background: rgba($amber, 0.2);
+    color: $amber;
+    border: 1px solid rgba($amber, 0.3);
+  }
+
+  &.news-tag-journal {
+    background: rgba($violet, 0.2);
+    color: $violet;
+    border: 1px solid rgba($violet, 0.3);
+  }
+
+  &.news-tag-conference {
+    background: rgba($rose, 0.2);
+    color: $rose;
+    border: 1px solid rgba($rose, 0.3);
+  }
+
+  &.news-tag-software {
+    background: rgba($teal, 0.2);
+    color: $teal;
+    border: 1px solid rgba($teal, 0.3);
   }
 
   &.news-tag-invited {

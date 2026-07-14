@@ -17,6 +17,14 @@ I also have substantial experience in successfully soliciting and managing multi
 
 <ul class="news-list">
   <li>
+    <span class="news-date">Jul 2026</span>
+    <span class="news-content">New research topic: <a href="{{ '/research/multi-agent-rl/' | relative_url }}">Partially Observable Multi-Agent Reinforcement Learning</a></span>
+  </li>
+  <li>
+    <span class="news-date">Jul 2026</span>
+    <span class="news-content">New software release: <a href="https://krm9c.github.io/coadapt-marl/" target="_blank">coadapt-marl</a> — a decentralized MARL harness under partial observability</span>
+  </li>
+  <li>
     <span class="news-date">Jul 2025</span>
     <span class="news-content">Presentation at <span class="news-venue">International Conference on Continuous Optimization</span></span>
   </li>
@@ -58,6 +66,7 @@ I also have substantial experience in successfully soliciting and managing multi
   <a href="{{ '/publications/' | relative_url }}">Publications (41+)</a>
   <a href="{{ '/team/' | relative_url }}">Team</a>
   <a href="{{ '/software/' | relative_url }}">Software</a>
+  <a href="https://krm9c.github.io/coadapt-marl/" target="_blank">coadapt-marl</a>
   <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}" target="_blank">CV (PDF)</a>
   <a href="https://scholar.google.com/citations?user=AQUdlTMAAAAJ" target="_blank">Google Scholar</a>
 </div>

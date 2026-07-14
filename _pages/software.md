@@ -10,6 +10,17 @@ nav_order: 5
 
 <div class="repo-grid">
 <div class="repo-card">
+  <a href="https://github.com/krm9c/coadapt-marl" target="_blank" class="repo-link">
+    <div class="repo-header">
+      <i class="fab fa-github"></i>
+      <h3>coadapt-marl</h3>
+    </div>
+    <p class="repo-path">krm9c/coadapt-marl</p>
+  </a>
+  <p class="repo-desc">Decentralized multi-agent RL harness under partial observability (JAX). Per-agent solvers: REINFORCE, PPO, GRPO, TRPO, recurrent.</p>
+  <a href="https://krm9c.github.io/coadapt-marl/" target="_blank" class="repo-view-btn">Docs &amp; code →</a>
+</div>
+<div class="repo-card">
   <a href="https://github.com/krm9c/ContLearn" target="_blank" class="repo-link">
     <div class="repo-header">
       <i class="fab fa-github"></i>
