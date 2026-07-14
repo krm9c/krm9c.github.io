@@ -545,7 +545,7 @@ hr {
 
 // Publication tags for bib entries
 .page {
-  counter-reset: publication-counter 55; // Start at 55 (54 + 1) for reverse counting
+  counter-reset: publication-counter; // ascending numbering: newest = 1 (auto-scales with # of papers)
 }
 
 h2.bibliography {
@@ -567,7 +567,7 @@ ol.bibliography {
   padding-left: 0;
 
   li {
-    counter-increment: publication-counter -1; // Decrement instead of increment
+    counter-increment: publication-counter; // ascending: 1, 2, 3, ... (newest first)
     position: relative;
     padding-left: 3rem;
     margin-bottom: 1.5rem;
