@@ -889,7 +889,10 @@ hr {
 
 // Publication tags for bib entries
 .page {
-  counter-reset: publication-counter; // ascending numbering: newest = 1 (auto-scales with # of papers)
+  // Descending numbering: newest paper = total count, counting down to 1.
+  // NOTE: CSS counters cannot read the number of entries, so this total is hardcoded.
+  // When you add/remove publications, update this to (number of papers + 1).
+  counter-reset: publication-counter 62; // 61 papers + 1
 }
 
 h2.bibliography {
@@ -911,7 +914,7 @@ ol.bibliography {
   padding-left: 0;
 
   li {
-    counter-increment: publication-counter; // ascending: 1, 2, 3, ... (newest first)
+    counter-increment: publication-counter -1; // descending: newest = highest, counting down to 1
     position: relative;
     padding-left: 3rem;
     margin-bottom: 1.5rem;
